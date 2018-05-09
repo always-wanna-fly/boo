@@ -11,7 +11,7 @@ use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
-use app\models\Upload;
+
 
 class SiteController extends Controller
 {
@@ -141,7 +141,7 @@ class SiteController extends Controller
         $model = new UploadForm();
 
         if (Yii::$app->request->isPost) {
-            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
             if ($model->upload()) {
                 // file is uploaded successfully
                 return;
